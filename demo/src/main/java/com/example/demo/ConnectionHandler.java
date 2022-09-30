@@ -1,9 +1,6 @@
 package com.example.demo;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class ConnectionHandler {
 
@@ -39,5 +36,14 @@ public class ConnectionHandler {
     public Statement getStatement() throws SQLException {
         connection = getConnection();
         return connection.createStatement();
+    }
+
+    public PreparedStatement prepareStatement(String query) throws SQLException {
+        // Uso il metodo getConnection invece di accedere direttamente per
+        // garantire che la connection sia attiva
+        Connection conn = getConnection();
+
+        // Creo un oggetto PreparedStatement con la query specificata come parametro e lo ritorno
+        return conn.prepareStatement(query);
     }
 }
