@@ -29,4 +29,15 @@ public class DemoController {
             return ResponseEntity.ok(true);
         return ResponseEntity.badRequest().build();
     }
+
+    @PostMapping(value = "/rimuoviProdotto")
+    public ResponseEntity<Boolean> rimuoviProdotto(
+            @RequestParam int id
+    )
+    {
+        boolean success = demoService.rimuoviProdotto(id);
+        if(success)
+            return ResponseEntity.ok(true);
+        return ResponseEntity.badRequest().build();
+    }
 }

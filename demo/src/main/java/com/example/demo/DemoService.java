@@ -24,6 +24,16 @@ public class DemoService {
     }
         return true;
     }
+
+    public boolean rimuoviProdotto(int id) {
+        try {
+            demoRepository.rimuoviProdotto(id);
+        } catch (SQLException e) {
+            System.out.println("Prodotto non esistente");
+            return false;
+        }
+        return true;
+    }
 }
 
 

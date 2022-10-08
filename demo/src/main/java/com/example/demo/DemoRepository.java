@@ -24,4 +24,10 @@ public class DemoRepository {
         ps.setDouble(5, prezzo);
         int rowsAffected = ps.executeUpdate();
     }
+
+    public void rimuoviProdotto(int id) throws SQLException {
+        PreparedStatement ps = connectionHandler.prepareStatement("delete from prodotto where id = ?");
+        ps.setInt(1, id);
+        int rowsAffected = ps.executeUpdate();
+    }
 }
